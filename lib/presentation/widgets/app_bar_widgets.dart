@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({super.key,required this.title});
+  const AppBarWidget({super.key, required this.title});
 
   final String title;
 
@@ -30,7 +30,6 @@ class AppBarWidget extends StatelessWidget {
           )
         ],
       ),
-      
     );
   }
 }

@@ -2,9 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflixclone/application/bloc/downloads_bloc.dart';
-import 'package:netflixclone/application/bloc/downloads_event.dart';
-import 'package:netflixclone/application/bloc/downloads_state.dart';
+import 'package:netflixclone/application/downloads/downloads_bloc.dart';
 import 'package:netflixclone/core/colors.dart';
 import 'package:netflixclone/core/constants.dart';
 import 'package:netflixclone/presentation/widgets/app_bar_widgets.dart';
@@ -20,6 +18,13 @@ class ScreenDownloads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // WidgetsBinding.instance.addPostFrameCallback(
+    //   (_) {
+    //     BlocProvider.of<DownloadsBloc>(context)
+    //         .add(const DownloadsEvent.getDownloadsImages());
+    //   },
+    // );
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
@@ -50,7 +55,7 @@ class Section2 extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
         BlocProvider.of<DownloadsBloc>(context)
-            .add(const DownloadsEvent.getDownloadsImage());
+            .add(const DownloadsEvent.getDownloadsImages());
       },
     );
 
@@ -74,43 +79,56 @@ class Section2 extends StatelessWidget {
         ),
         BlocBuilder<DownloadsBloc, DownloadsState>(
           builder: (context, state) {
-            print('${state.downloads} state.downloads list--------------------->>>>>>>>>>');
-
+            print(state.downloads);
+            print('------state.downloads----------');
             return SizedBox(
+              height: size.height,
               width: size.width,
-              height: size.width,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: size.width * 0.35,
-                    backgroundColor: Colors.grey.withOpacity(0.5),
-                  ),
-                  DownloadsImageWidget(
-                      // image: '$imageAppendUrl${state.downloads![0].posterPath.toString()}',
-                      image: '',
-                      margin: EdgeInsets.only(
-                        left: 130,
-                      ),
-                      angle: 25,
-                      // radius: 10,
-                      size: Size(size.width * 0.35, size.width * 0.55)),
-                  DownloadsImageWidget(
-                      // image: '$imageAppendUrl${state.downloads![1].posterPath.toString()}',
+              child: SizedBox(
+                width: size.width,
+                height: size.width,
+                child: state.isLoading == true
+                    ? const Center(child: CircularProgressIndicator())
+                    : Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: size.width * 0.35,
+                            backgroundColor: Colors.grey.withOpacity(0.5),
+                          ),
+                          DownloadsImageWidget(
+                              image: state.downloads.isNotEmpty
+                                  ? '$imageAppendUrl${state.downloads[0].posterPath.toString()}'
+                                  : '',
+                              // image: '',
+                              margin: EdgeInsets.only(
+                                left: 130,
+                              ),
+                              angle: 25,
+                              // radius: 10,
+                              size: Size(size.width * 0.35, size.width * 0.55)),
+                          DownloadsImageWidget(
+                              image: state.downloads.isNotEmpty
+                                  ? '$imageAppendUrl${state.downloads[1].posterPath.toString()}'
+                                  : '',
 
-                      image: '',
-                      margin: EdgeInsets.only(
-                        right: 130,
+                              // image: '',
+                              margin: EdgeInsets.only(
+                                right: 130,
+                              ),
+                              angle: -20,
+                              size: Size(size.width * 0.35, size.width * 0.55)),
+                          DownloadsImageWidget(
+                              // image: '',
+                              image: state.downloads.isNotEmpty
+                                  ? '$imageAppendUrl${state.downloads[2].posterPath.toString()}'
+                                  : '',
+                              radius: 5,
+                              margin:
+                                  EdgeInsets.only(left: 0, top: 0, bottom: 10),
+                              size: Size(size.width * 0.4, size.width * 0.6)),
+                        ],
                       ),
-                      angle: -20,
-                      size: Size(size.width * 0.35, size.width * 0.55)),
-                  DownloadsImageWidget(
-                      image: '',
-                      // image: '$imageAppendUrl${state.downloads![2].posterPath.toString()}',
-                      radius: 5,
-                      margin: EdgeInsets.only(left: 0, top: 0, bottom: 10),
-                      size: Size(size.width * 0.4, size.width * 0.6)),
-                ],
               ),
             );
           },

@@ -61,7 +61,7 @@ class ScreenHome extends StatelessWidget {
                     ]),
                     scrollNotifier.value == true
                         ? AnimatedContainer(
-                          duration: Duration(milliseconds: 1000),
+                            duration: Duration(milliseconds: 1000),
                             width: double.infinity,
                             height: 90,
                             color: Colors.black.withOpacity(0.5),
@@ -76,24 +76,25 @@ class ScreenHome extends StatelessWidget {
                                       height: 60,
                                     ),
                                     Spacer(),
-                                  Icon(
-                                    Icons.cast,
-                                    size: 30,
-                                  ),
-                                  kWidth,
-                                  Container(
-                                    color: Colors.blue,
-                                    height: 30,
-                                    width: 30,
-                                  )
+                                    Icon(
+                                      Icons.cast,
+                                      size: 30,
+                                    ),
+                                    kWidth,
+                                    Container(
+                                      color: Colors.blue,
+                                      height: 30,
+                                      width: 30,
+                                    )
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text('Tv Shows',style: kHomeTitleText),
-                                      Text('Movies',style: kHomeTitleText),
-                                        Text('Categories', style: kHomeTitleText),
+                                    Text('Tv Shows', style: kHomeTitleText),
+                                    Text('Movies', style: kHomeTitleText),
+                                    Text('Categories', style: kHomeTitleText),
                                   ],
                                 )
                               ],

@@ -9,7 +9,6 @@ import 'package:netflixclone/domain/downloads/models/downloads.dart';
 
 @LazySingleton(as: IDownloadsRepo)
 class DownloadsRepository implements IDownloadsRepo {
-  
   @override
   Future<Either<MainFailures, List<Downloads>>> getDownloadsImages() async {
     try {

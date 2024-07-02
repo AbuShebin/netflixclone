@@ -15,7 +15,6 @@ class ComingSoonWidget extends StatelessWidget {
 
     return Row(
       children: [
-        
         const SizedBox(
           width: 50,
           height: 500,
@@ -33,7 +32,7 @@ class ComingSoonWidget extends StatelessWidget {
         SizedBox(
           width: size.width - 50,
           height: 500,
-          child:const Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               videoWidget(),

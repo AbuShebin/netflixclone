@@ -3,5 +3,5 @@ import 'package:netflixclone/domain/core/failures/main_failures.dart';
 import 'package:netflixclone/domain/downloads/models/downloads.dart';
 
 abstract class IDownloadsRepo {
-  Future<Either<MainFailures, List<Downloads>>>  getDownloadsImages();
+  Future<Either<MainFailures, List<Downloads>>> getDownloadsImages();
 }

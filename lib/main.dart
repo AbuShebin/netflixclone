@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflixclone/application/bloc/downloads_bloc.dart';
+import 'package:netflixclone/application/downloads/downloads_bloc.dart';
 import 'package:netflixclone/core/colors.dart';
 import 'package:netflixclone/domain/core/di/injectable.dart';
 import 'package:netflixclone/presentation/main_page/screen_mainPage.dart';
@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(create: (context) => getIt<DownloadsBloc>(),)
-    ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (ctx) => getIt<DownloadsBloc>()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,

@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/colors.dart';
 import 'package:netflixclone/core/constants.dart';
 import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart';
 
 class videoWidget extends StatelessWidget {
-  const 
-videoWidget({
+  const videoWidget({
     super.key,
   });
 

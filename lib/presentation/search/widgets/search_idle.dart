@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +14,9 @@ class SearchIdleWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-  const SearchTextTitle(title: 'Top Searches',),
+        const SearchTextTitle(
+          title: 'Top Searches',
+        ),
         kheight,
         Expanded(
           child: ListView.separated(
@@ -25,8 +25,6 @@ class SearchIdleWidget extends StatelessWidget {
               separatorBuilder: (context, index) => kheight,
               itemCount: 10),
         ),
-      
-        
       ],
     );
   }
@@ -44,23 +42,30 @@ class TopSearchItemTile extends StatelessWidget {
           width: screenWidth * 0.35,
           height: 70,
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(imageUrl[1]), fit: BoxFit.cover),
-                  ),
-                  
+            image: DecorationImage(
+                image: NetworkImage(imageUrl[1]), fit: BoxFit.cover),
+          ),
         ),
         kWidth,
-        const  Expanded(
-            child: Text(
-            'Movie Name',style: TextStyle(color: kwhiteColor,fontWeight: FontWeight.bold,fontSize: 16),
-                    ),
+        const Expanded(
+          child: Text(
+            'Movie Name',
+            style: TextStyle(
+                color: kwhiteColor, fontWeight: FontWeight.bold, fontSize: 16),
           ),
-       const   CircleAvatar(backgroundColor: kwhiteColor,radius: 25,
-          child: CircleAvatar(backgroundColor: kBlackColor,
-          child: Icon(Icons.play_circle_fill,color: kwhiteColor,),
-          radius: 23,
+        ),
+        const CircleAvatar(
+          backgroundColor: kwhiteColor,
+          radius: 25,
+          child: CircleAvatar(
+            backgroundColor: kBlackColor,
+            child: Icon(
+              Icons.play_circle_fill,
+              color: kwhiteColor,
+            ),
+            radius: 23,
           ),
-          )
+        )
       ],
     );
   }

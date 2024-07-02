@@ -4,8 +4,7 @@ import 'package:netflixclone/presentation/widgets/main_title.dart';
 import 'package:netflixclone/presentation/widgets/main_title_card.dart';
 
 class NumberTitleCard extends StatelessWidget {
-  const NumberTitleCard
-({
+  const NumberTitleCard({
     super.key,
   });
 
@@ -14,15 +13,17 @@ class NumberTitleCard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-          
-            LimitedBox(
-    maxHeight: 200,
-    child: ListView(
-      scrollDirection: Axis.horizontal,
-      children: List.generate(10, (index) => NumberCard(index: index,)),
-    ),
-            ),
-        
+        LimitedBox(
+          maxHeight: 200,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: List.generate(
+                10,
+                (index) => NumberCard(
+                      index: index,
+                    )),
+          ),
+        ),
       ],
     );
   }

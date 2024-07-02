@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchTextTitle extends StatelessWidget {
-  const SearchTextTitle({
-    required this.title
-  });
+  const SearchTextTitle({required this.title});
 
   final String title;
 

@@ -16,7 +16,6 @@ class ScreenSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CupertinoSearchTextField(
@@ -29,10 +28,11 @@ class ScreenSearch extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
           kheight,
-          Expanded(child: SearchREsultWidget())
+
+          Expanded(child: SearchREsultWidget()),
+          // Expanded(child: SearchIdleWidget())
         ],
       ),
     );
   }
 }
-
