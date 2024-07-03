@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflixclone/application/search/search_bloc.dart';
 import 'package:netflixclone/core/constants.dart';
 import 'package:netflixclone/presentation/search/widgets/search_idle.dart';
 import 'package:netflixclone/presentation/search/widgets/search_result.dart';
@@ -14,6 +16,11 @@ class ScreenSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        BlocProvider.of<SearchBloc>(context).add(Initialize());
+      },
+    );
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
