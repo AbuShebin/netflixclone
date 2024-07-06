@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflixclone/application/search/search_bloc.dart';
 import 'package:netflixclone/core/constants.dart';
-import 'package:netflixclone/presentation/search/screen_search.dart';
-import 'package:netflixclone/presentation/widgets/mainCard.dart';
 import 'package:netflixclone/presentation/search/widgets/title.dart';
 
 const String _imageUrl =
@@ -15,20 +15,47 @@ class SearchREsultWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         SearchTextTitle(title: 'Movies & TV'),
         kheight,
-        Expanded(
-            child: GridView.count(
-          childAspectRatio: 1 / 1.4,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-          crossAxisCount: 3,
-          shrinkWrap: true,
-          children: List.generate(20, (index) {
-            return MainCard();
-          }),
+        Expanded(child: BlocBuilder<SearchBloc, SearchState>(
+          builder: (context, state) {
+            return GridView.count(
+              childAspectRatio: 1 / 1.4,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              crossAxisCount: 3,
+              shrinkWrap: true,
+              children: List.generate(20, (index) {
+                final movie = state.SearchResultList[index];
+                return MainCard(
+                  imageUrl: movie.posterImageUrl,
+                );
+              }),
+            );
+          },
         ))
       ],
     );
   }
 }
+
+class MainCard extends StatelessWidget {
+  final  String imageUrl ;
+  MainCard({super.key,required this.imageUrl});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      width: 130,
+      height: 200,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: NetworkImage(imageUrl),fit: BoxFit.cover
+          ),
+          borderRadius: BorderRadius.circular(7)),
+    );
+  }
+}
+

@@ -18,12 +18,6 @@ class ScreenDownloads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback(
-    //   (_) {
-    //     BlocProvider.of<DownloadsBloc>(context)
-    //         .add(const DownloadsEvent.getDownloadsImages());
-    //   },
-    // );
 
     return Scaffold(
       appBar: PreferredSize(
@@ -79,8 +73,8 @@ class Section2 extends StatelessWidget {
         ),
         BlocBuilder<DownloadsBloc, DownloadsState>(
           builder: (context, state) {
-            print(state.downloads);
-            print('------state.downloads----------');
+            // print(state.downloads);
+            // print('------state.downloads----------');
             return SizedBox(
               height: size.height,
               width: size.width,
