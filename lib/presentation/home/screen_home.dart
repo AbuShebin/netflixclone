@@ -40,7 +40,7 @@ class ScreenHome extends StatelessWidget {
                 },
                 child: Stack(
                   children: [
-                    ListView(children:  [
+                    ListView(children: [
                       BackgroundCard(),
                       MainTitleCard(
                         title: 'Released in Past Year',

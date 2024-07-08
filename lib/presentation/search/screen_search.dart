@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflixclone/application/search/search_bloc.dart';
 import 'package:netflixclone/core/constants.dart';
+import 'package:netflixclone/domain/core/debounce/debounce.dart';
 import 'package:netflixclone/presentation/search/widgets/search_idle.dart';
 import 'package:netflixclone/presentation/search/widgets/search_result.dart';
 
@@ -12,7 +13,9 @@ final imageUrl = [
 ];
 
 class ScreenSearch extends StatelessWidget {
-  const ScreenSearch({super.key});
+  ScreenSearch({super.key});
+
+  Debouncer _debouncer = Debouncer(milliseconds: 1 * 1000);
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,16 @@ class ScreenSearch extends StatelessWidget {
             suffixIcon: Icon(CupertinoIcons.xmark_circle),
             style: TextStyle(color: Colors.white),
             onChanged: (value) {
-              print(value);
-              BlocProvider.of<SearchBloc>(context)
-                  .add(SearchMovie(movieQuery: value));
+              _debouncer.run(
+                () {
+                  if (value.isEmpty) {
+                    return null;
+                  }
+                  print(value);
+                  BlocProvider.of<SearchBloc>(context)
+                      .add(SearchMovie(movieQuery: value));
+                },
+              );
             },
           ),
           kheight,

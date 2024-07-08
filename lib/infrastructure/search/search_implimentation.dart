@@ -30,7 +30,8 @@ class SearchImpl implements SearchService {
 
         return right(result);
       } else {
-        print("something went wrong in search implimentation.dart=====->>>>>>>>>>");
+        print(
+            "something went wrong in search implimentation.dart=====->>>>>>>>>>");
         return const Left(MainFailures.serverFailure());
       }
     } catch (e) {

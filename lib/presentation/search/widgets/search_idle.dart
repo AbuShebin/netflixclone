@@ -39,8 +39,11 @@ class SearchIdleWidget extends StatelessWidget {
               return ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    final movie = state.idleList[index]; 
-                    return  TopSearchItemTile(imageUrl: '$imageAppendUrl${movie.posterPath}'??'',title: state.idleList[index].title??'no title provided',);
+                    final movie = state.idleList[index];
+                    return TopSearchItemTile(
+                      imageUrl: '$imageAppendUrl${movie.posterPath}' ?? '',
+                      title: state.idleList[index].title ?? 'no title provided',
+                    );
                   },
                   separatorBuilder: (context, index) => kheight,
                   itemCount: state.idleList.length);
@@ -55,7 +58,7 @@ class SearchIdleWidget extends StatelessWidget {
 class TopSearchItemTile extends StatelessWidget {
   final String imageUrl;
   final String title;
-  const TopSearchItemTile({required this.imageUrl,required this.title});
+  const TopSearchItemTile({required this.imageUrl, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +66,19 @@ class TopSearchItemTile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: screenWidth * 0.35,
-          height: 70,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage(imageUrl,),fit: BoxFit.fill
-          ),
-           )   ),
-SizedBox(width: 5,),
-         Expanded(
+            width: screenWidth * 0.35,
+            height: 70,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(
+                    imageUrl,
+                  ),
+                  fit: BoxFit.fill),
+            )),
+        SizedBox(
+          width: 5,
+        ),
+        Expanded(
           child: Text(
             title,
             style: TextStyle(

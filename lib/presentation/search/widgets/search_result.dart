@@ -15,7 +15,6 @@ class SearchREsultWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         SearchTextTitle(title: 'Movies & TV'),
         kheight,
         Expanded(child: BlocBuilder<SearchBloc, SearchState>(
@@ -32,7 +31,6 @@ class SearchREsultWidget extends StatelessWidget {
                   imageUrl: movie.posterImageUrl,
                 );
               }),
-
             );
           },
         ))
@@ -42,8 +40,8 @@ class SearchREsultWidget extends StatelessWidget {
 }
 
 class MainCard extends StatelessWidget {
-  final  String imageUrl ;
-  MainCard({super.key,required this.imageUrl});
+  final String imageUrl;
+  MainCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +50,9 @@ class MainCard extends StatelessWidget {
       width: 130,
       height: 200,
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(imageUrl),fit: BoxFit.cover
-          ),
+          image:
+              DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(7)),
     );
   }
 }
-
