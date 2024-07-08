@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -23,7 +22,7 @@ class DownloadsRepository implements IDownloadsRepo {
           },
         ).toList();
 print(downloadsList.first.title);
-print(downloadsList.first.);
+print(downloadsList.first.posterPath);
         print("$downloadsList----------------------");
 
         return right(downloadsList);

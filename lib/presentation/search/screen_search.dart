@@ -34,6 +34,7 @@ class ScreenSearch extends StatelessWidget {
             suffixIcon: Icon(CupertinoIcons.xmark_circle),
             style: TextStyle(color: Colors.white),
             onChanged: (value) {
+              print(value);
               BlocProvider.of<SearchBloc>(context)
                   .add(SearchMovie(movieQuery: value));
             },

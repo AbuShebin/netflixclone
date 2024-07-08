@@ -32,6 +32,7 @@ class SearchREsultWidget extends StatelessWidget {
                   imageUrl: movie.posterImageUrl,
                 );
               }),
+
             );
           },
         ))
