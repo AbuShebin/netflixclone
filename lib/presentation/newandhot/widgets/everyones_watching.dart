@@ -5,8 +5,15 @@ import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart
 import 'package:netflixclone/presentation/widgets/video_widget.dart';
 
 class EveryOnesWatchingWidget extends StatelessWidget {
+
+  final String posterPath;
+final String movieName;
+final String description;
+
   const EveryOnesWatchingWidget({
-    super.key,
+    required this. posterPath,
+required this.movieName,
+required this. description,
   });
 
   @override
@@ -28,7 +35,7 @@ class EveryOnesWatchingWidget extends StatelessWidget {
           style: TextStyle(color: kGreyColor),
         ),
         kHeight50,
-        videoWidget(),
+        // videoWidget(),
         kheight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

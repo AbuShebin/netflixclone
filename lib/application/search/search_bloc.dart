@@ -93,3 +93,4 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
   }
 }
+

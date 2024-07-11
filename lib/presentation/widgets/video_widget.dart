@@ -4,7 +4,9 @@ import 'package:netflixclone/core/constants.dart';
 import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart';
 
 class videoWidget extends StatelessWidget {
+  final String imageurl;
   const videoWidget({
+    required this.imageurl,
     super.key,
   });
 
@@ -16,7 +18,7 @@ class videoWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            newAndHotTempImage,
+            imageurl,
             fit: BoxFit.cover,
           ),
         ),
