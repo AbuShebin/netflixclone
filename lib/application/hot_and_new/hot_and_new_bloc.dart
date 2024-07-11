@@ -47,8 +47,35 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
     });
 
     // Get hot and new TV data
-    on<LoadDataInEveryOnesWatching>((event, emit) {
-      // TODO: implement event handler
+    on<LoadDataInEveryOnesWatching>((event, emit) async{
+      // Send loading state to UI
+      emit(HotAndNewState(
+        comingSoonList: [],
+        everyoneIsWatchinList: [],
+        isLoading: true,
+        hasError: false,
+      ));
+
+      // Get data from remote
+      final _result = await _hotAndNewService.getHotAndNEwTvData();
+
+      // Data to state
+      final newState = _result.fold(
+        (MainFailures l) => HotAndNewState(
+          comingSoonList: [],
+          everyoneIsWatchinList: [],
+          isLoading: false,
+          hasError: true,
+        ),
+        (HotAndNewResponse r) => HotAndNewState(
+          comingSoonList: state.comingSoonList,
+          everyoneIsWatchinList: r.results,
+          isLoading: false,
+          hasError: false,
+        ),
+      );
+
+      emit(newState);
     });
   }
 }

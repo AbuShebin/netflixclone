@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,19 +12,13 @@ import 'package:netflixclone/presentation/newandhot/widgets/coming_soon.dart';
 import 'package:netflixclone/presentation/newandhot/widgets/everyones_watching.dart';
 import 'package:netflixclone/presentation/widgets/app_bar_widgets.dart';
 import 'package:netflixclone/presentation/widgets/video_widget.dart';
+import 'package:intl/intl.dart';
 
 class ScreenNewandHot extends StatelessWidget {
   const ScreenNewandHot({super.key});
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        BlocProvider.of<HotAndNewBloc>(context)
-            .add(HotAndNewEvent.loadDataInComingSoon());
-      },
-    );
-
     return DefaultTabController(
       length: 2,
       child: SafeArea(
@@ -69,35 +65,74 @@ class ScreenNewandHot extends StatelessWidget {
                 ),
               )),
           body: TabBarView(children: [
-            ComingSoomList(key: Key('coming soon'),),
-            _buildEveryOnesWatching(),
+            ComingSoomList(
+              key: Key('coming soon'),
+            ),
+           EveryoneIsWatchinList(key: Key('EveryOne_is_watching'),)
           ]),
         ),
       ),
-    );
-  }
-
-  // Widget _buildComingSoon({required BuildContext context}) {
-  //   Size size = MediaQuery.of(context).size;
-  //   return ListView.builder(
-  //     itemBuilder: (context, index) {
-  //       return ComingSoonWidget();
-  //     },
-  //     itemCount: 5,
-  //   );
-  // }
-
-  Widget _buildEveryOnesWatching() {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return SizedBox();
-      },
     );
   }
 }
 
 class ComingSoomList extends StatelessWidget {
   ComingSoomList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        BlocProvider.of<HotAndNewBloc>(context)
+            .add(HotAndNewEvent.loadDataInEveryOnesWatching());
+      },
+    );
+
+    return BlocBuilder<HotAndNewBloc, HotAndNewState>(
+      builder: (context, state) {
+        if (state.isLoading) {
+          return Center(child: CircularProgressIndicator());
+        } else if (state.hasError) {
+          return Text('SOme Error OCcured');
+        } else if (state.everyoneIsWatchinList.isEmpty) {
+          return Text('EveryoNeis watching List is Empty');
+        } else {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final movie = state.everyoneIsWatchinList[index];
+
+              String month = '';
+              String day = '';
+
+              try {
+                final _date = DateTime.parse(movie.releaseDate!);
+
+                final _formatedDate = DateFormat.yMMMd('en_US').format(_date);
+
+                log(_formatedDate.toString());
+                print(_formatedDate);
+                month = _formatedDate.split(' ').first.substring(0, 3);
+                day = movie.releaseDate?.split('-')[1] ?? '';
+              } catch (_) {
+                month = '';
+                day = '';
+              }
+              final tv = state.everyoneIsWatchinList[index];
+              return EveryOnesWatchingWidget(
+                  posterPath: '$imageAppendUrl${tv.posterPath}',
+                  movieName: tv.originalname??'No name provided',
+                  description: tv.overview ?? 'No description');
+            },
+            itemCount: state.everyoneIsWatchinList.length,
+          );
+        }
+      },
+    );
+  }
+}
+
+class EveryoneIsWatchinList extends StatelessWidget {
+  EveryoneIsWatchinList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +149,28 @@ class ComingSoomList extends StatelessWidget {
             itemBuilder: (context, index) {
               final movie = state.comingSoonList[index];
 
+              String month = '';
+              String day = '';
+
+              try {
+                final _date = DateTime.parse(movie.releaseDate!);
+
+                final _formatedDate = DateFormat.yMMMd('en_US').format(_date);
+
+                log(_formatedDate.toString());
+                print(_formatedDate);
+                month = _formatedDate.split(' ').first.substring(0, 3);
+                day = movie.releaseDate?.split('-')[1] ?? '';
+              } catch (_) {
+                month = '';
+                day = '';
+              }
+
               return ComingSoonWidget(
                 id: movie.id.toString(),
-                day: '11',
+                day: day,
                 description: movie.overview ?? 'No Description Available',
-                month: 'March',
+                month: month,
                 movieName: movie.originalTitle ?? 'No Movie Name',
                 posterPath: '$imageAppendUrl${movie.posterPath}' ??
                     'No Poster Available',

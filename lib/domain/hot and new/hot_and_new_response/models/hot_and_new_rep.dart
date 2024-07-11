@@ -9,7 +9,7 @@ class HotAndNewResponse {
   @JsonKey(name: 'results')
   List<HotAndNewData> results;
 
-  HotAndNewResponse({this.page, this.results= const []});
+  HotAndNewResponse({this.page, this.results = const []});
 
   factory HotAndNewResponse.fromJson(Map<String, dynamic> json) {
     return _$HotAndNewResponseFromJson(json);
@@ -18,9 +18,9 @@ class HotAndNewResponse {
   Map<String, dynamic> toJson() => _$HotAndNewResponseToJson(this);
 }
 
-@JsonSerializable() 
+@JsonSerializable()
 class HotAndNewData {
-  @JsonKey(name: 'backdrop_path') 
+  @JsonKey(name: 'backdrop_path')
   String? backdropPath;
   @JsonKey(name: 'id')
   int? id;
@@ -28,6 +28,9 @@ class HotAndNewData {
   String? originalLanguage;
   @JsonKey(name: 'original_title')
   String? originalTitle;
+  ///in case of tv series, use original_name instead of original_title.
+  @JsonKey(name: 'original_name')
+  String? originalname;
   @JsonKey(name: 'overview')
   String? overview;
   @JsonKey(name: 'poster_path')
