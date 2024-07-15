@@ -11,9 +11,10 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:netflixclone/application/downloads/downloads_bloc.dart' as _i5;
+import 'package:netflixclone/application/home_bloc/home_bloc.dart' as _i11;
 import 'package:netflixclone/application/hot_and_new/hot_and_new_bloc.dart'
     as _i10;
-import 'package:netflixclone/application/search/search_bloc.dart' as _i11;
+import 'package:netflixclone/application/search/search_bloc.dart' as _i12;
 import 'package:netflixclone/domain/downloads/i_downloads_repo.dart' as _i3;
 import 'package:netflixclone/domain/hot%20and%20new/hot_and_new_response/hot_and_new_service.dart'
     as _i8;
@@ -43,7 +44,8 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i8.HotAndNewService>(() => _i9.HotAndNewImplementation());
     gh.factory<_i10.HotAndNewBloc>(
         () => _i10.HotAndNewBloc(gh<_i8.HotAndNewService>()));
-    gh.factory<_i11.SearchBloc>(() => _i11.SearchBloc(
+    gh.factory<_i11.HomeBloc>(() => _i11.HomeBloc(gh<_i8.HotAndNewService>()));
+    gh.factory<_i12.SearchBloc>(() => _i12.SearchBloc(
           gh<_i3.IDownloadsRepo>(),
           gh<_i6.SearchService>(),
         ));

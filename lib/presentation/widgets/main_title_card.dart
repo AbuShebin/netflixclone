@@ -5,10 +5,10 @@ import 'package:netflixclone/presentation/widgets/main_title.dart';
 
 class MainTitleCard extends StatelessWidget {
   final String title;
-  MainTitleCard({required this.title});
+  final List<String> posterList;
+  MainTitleCard({required this.title,required this.posterList});
 
-  String mainCardImag4 =
-      'https://image.tmdb.org/t/p/original/apbrbWs8M9lyOpJYU5WXrpFbk1Z.jpg';
+  
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class MainTitleCard extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-                10,
+                posterList.length,
                 (index) => MainCard(
-                      imageUrl: mainCardImag4,
+                      imageUrl: posterList[index],
                     )),
           ),
         )

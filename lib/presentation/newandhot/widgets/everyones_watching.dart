@@ -23,7 +23,7 @@ required this. description,
       children: [
         kheight,
         Text(
-          'Friends',
+          movieName,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -31,11 +31,13 @@ required this. description,
         ),
         kheight,
         Text(
-          'This hit sitcom follows the merry misadventures of six 20-something pals as they navigate the pifalss of work, life and love in 1990s Manhattan.',
+         description,
           style: TextStyle(color: kGreyColor),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 4,
         ),
         kHeight50,
-        // videoWidget(),
+        videoWidget(imageurl: posterPath,),
         kheight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

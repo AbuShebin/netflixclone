@@ -47,7 +47,7 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
     });
 
     // Get hot and new TV data
-    on<LoadDataInEveryOnesWatching>((event, emit) async{
+    on<LoadDataInEveryOnesWatching>((event, emit) async {
       // Send loading state to UI
       emit(HotAndNewState(
         comingSoonList: [],
@@ -59,9 +59,11 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
       // Get data from remote
       final _result = await _hotAndNewService.getHotAndNEwTvData();
 
+      print("result ---$_result");
+
       // Data to state
       final newState = _result.fold(
-        (MainFailures l) => HotAndNewState(
+        (MainFailures l) =>const HotAndNewState(
           comingSoonList: [],
           everyoneIsWatchinList: [],
           isLoading: false,

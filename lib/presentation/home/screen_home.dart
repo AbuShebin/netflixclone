@@ -1,9 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflixclone/application/home_bloc/home_bloc.dart';
 import 'package:netflixclone/core/colors.dart';
 import 'package:netflixclone/core/constants.dart';
+import 'package:netflixclone/domain/hot%20and%20new/hot_and_new_response/models/hot_and_new_rep.dart';
 import 'package:netflixclone/presentation/home/widgets/background_card.dart';
 import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart';
 import 'package:netflixclone/presentation/home/widgets/number_card.dart';
@@ -20,6 +25,13 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        // BlocProvider.of<HomeBloc>(context).add(HomeEvent.getHomeScreenData());
+        BlocProvider.of<HomeBloc>(context).add(GetHomeScreenData());
+      },
+    );
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -40,25 +52,105 @@ class ScreenHome extends StatelessWidget {
                 },
                 child: Stack(
                   children: [
-                    ListView(children: [
-                      BackgroundCard(),
-                      MainTitleCard(
-                        title: 'Released in Past Year',
-                      ),
-                      kheight,
-                      MainTitleCard(
-                        title: 'Trending Now',
-                      ),
-                      kheight,
-                      MainTitle(title: 'Top 10 Tv Shows In India Today'),
-                      kheight,
-                      NumberTitleCard(),
-                      kheight,
-                      MainTitleCard(title: 'Tense Dramas'),
-                      kheight,
-                      MainTitleCard(title: 'South Indian Cinema'),
-                      kheight,
-                    ]),
+                    BlocBuilder<HomeBloc, HomeState>(
+                      builder: (context, state) {
+                        if (state.isLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                            ),
+                          );
+                        } else if (state.hasError) {
+                          // print(state.toString());
+                          print(state);
+                          return const Center(
+                            child: Text('Error while loading data',
+                                style: TextStyle(color: Colors.white)),
+                          );
+                        }
+                        //released past year
+                        final _releasedPastYear = state.pastYearMovieList.map(
+                          (m) {
+                            return "$imageAppendUrl${m.posterPath}";
+                          },
+                        ).toList();
+                        // _releasedPastYear.shuffle();
+
+                        //trending
+                        final _trending = state.trendingTvList.map(
+                          (m) {
+                            return "$imageAppendUrl${m.posterPath}";
+                          },
+                        ).toList();
+                        _trending.shuffle();
+
+                        //tense dramas
+                        final _tenseDramas = state.tenseDramasMovieList.map(
+                          (m) {
+                            return "$imageAppendUrl${m.posterPath}";
+                          },
+                        ).toList();
+                        // _tenseDramas.shuffle();
+
+                        //south Indian Movies
+                        final _southIndianMovies =
+                            state.southIndianMovieList.map(
+                          (m) {
+                            return "$imageAppendUrl${m.posterPath}";
+                          },
+                        ).toList();
+                        _southIndianMovies.shuffle();
+
+                        print(_southIndianMovies);
+                        print(
+                            'south indian movie lenght =====${_southIndianMovies.length}');
+
+                        //top 10 tv shows
+                        final _top10TvShows = state.trendingTvList.map(
+                          (m) {
+                            return "$imageAppendUrl${m.posterPath}";
+                          },
+                        ).toList();
+                        // _top10TvShows.shuffle();
+
+                        //ListView
+                        return ListView(children: [
+                          if(_trending.isNotEmpty)
+                          BackgroundCard(imageUrl: '$imageAppendUrl${state.trendingTvList.first.posterPath}',),
+                          if (_releasedPastYear.length >= 10)
+                            MainTitleCard(
+                              title: 'Released in Past Year',
+                              posterList: _releasedPastYear.sublist(0, 10),
+                            ),
+                          kheight,
+                          if (_trending.length >= 10)
+                            MainTitleCard(
+                              title: 'Trending Now',
+                              posterList: _trending.sublist(0, 10),
+                            ),
+                          kheight,
+                          MainTitle(title: 'Top 10 Tv Shows In India Today'),
+                          kheight,
+                          if (_top10TvShows.length >= 10)
+                            NumberTitleCard(
+                              posterList: _top10TvShows,
+                            ),
+                          kheight,
+                          if (_tenseDramas.length >= 10)
+                            MainTitleCard(
+                              title: 'Tense Dramas',
+                              posterList: _tenseDramas.sublist(0, 10),
+                            ),
+                          kheight,
+                          if (_southIndianMovies.length >= 10)
+                            MainTitleCard(
+                              title: 'South Indian Cinema',
+                              posterList: _southIndianMovies.sublist(0, 10),
+                            ),
+                          kheight,
+                        ]);
+                      },
+                    ),
                     scrollNotifier.value == true
                         ? AnimatedContainer(
                             duration: Duration(milliseconds: 1000),

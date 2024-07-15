@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflixclone/application/downloads/downloads_bloc.dart';
+import 'package:netflixclone/application/home_bloc/home_bloc.dart';
 import 'package:netflixclone/application/hot_and_new/hot_and_new_bloc.dart';
 import 'package:netflixclone/application/search/search_bloc.dart';
 import 'package:netflixclone/core/colors.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
          BlocProvider(
           create: (context) => getIt<HotAndNewBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<HomeBloc>(),
         ),
       ],
       child: MaterialApp(

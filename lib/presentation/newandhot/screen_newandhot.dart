@@ -68,7 +68,9 @@ class ScreenNewandHot extends StatelessWidget {
             ComingSoomList(
               key: Key('coming soon'),
             ),
-           EveryoneIsWatchinList(key: Key('EveryOne_is_watching'),)
+            EveryoneIsWatchinList(
+              key: Key('EveryOne_is_watching'),
+            )
           ]),
         ),
       ),
@@ -76,8 +78,76 @@ class ScreenNewandHot extends StatelessWidget {
   }
 }
 
+///coming soon
 class ComingSoomList extends StatelessWidget {
   ComingSoomList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        BlocProvider.of<HotAndNewBloc>(context)
+            .add(HotAndNewEvent.loadDataInComingSoon());
+      },
+    );
+
+    return RefreshIndicator(
+      onRefresh: () async {
+        BlocProvider.of<HotAndNewBloc>(context)
+            .add(HotAndNewEvent.loadDataInComingSoon());
+      },
+      child: BlocBuilder<HotAndNewBloc, HotAndNewState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state.hasError) {
+            return Text('SOme Error OCcured');
+          } else if (state.comingSoonList.isEmpty) {
+           
+            return Text('Coming soon List is Empty');
+          } else {
+            return ListView.builder(
+              padding: const EdgeInsets.only(top: 20),
+              itemBuilder: (context, index) {
+                final movie = state.comingSoonList[index];
+
+                String month = '';
+                String day = '';
+
+                try {
+                  final _date = DateTime.parse(movie.releaseDate!);
+
+                  final _formatedDate = DateFormat.yMMMd('en_US').format(_date);
+
+                  log(_formatedDate.toString());
+                  print(_formatedDate);
+                  month = _formatedDate.split(' ').first.substring(0, 3);
+                  day = movie.releaseDate?.split('-')[1] ?? '';
+                } catch (_) {
+                  month = '';
+                  day = '';
+                }
+                return ComingSoonWidget(
+                    id: movie.id.toString(),
+                    day: day,
+                    description: movie.overview ?? "no overview",
+                    month: month,
+                    movieName: movie.originalTitle ?? 'No title',
+                    posterPath: '$imageAppendUrl${movie.posterPath}' ??
+                        'No posterPath');
+              },
+              itemCount: state.comingSoonList.length,
+            );
+          }
+        },
+      ),
+    );
+  }
+}
+
+///EveryOnes watching
+class EveryoneIsWatchinList extends StatelessWidget {
+  EveryoneIsWatchinList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,99 +157,52 @@ class ComingSoomList extends StatelessWidget {
             .add(HotAndNewEvent.loadDataInEveryOnesWatching());
       },
     );
-
-    return BlocBuilder<HotAndNewBloc, HotAndNewState>(
-      builder: (context, state) {
-        if (state.isLoading) {
-          return Center(child: CircularProgressIndicator());
-        } else if (state.hasError) {
-          return Text('SOme Error OCcured');
-        } else if (state.everyoneIsWatchinList.isEmpty) {
-          return Text('EveryoNeis watching List is Empty');
-        } else {
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              final movie = state.everyoneIsWatchinList[index];
-
-              String month = '';
-              String day = '';
-
-              try {
-                final _date = DateTime.parse(movie.releaseDate!);
-
-                final _formatedDate = DateFormat.yMMMd('en_US').format(_date);
-
-                log(_formatedDate.toString());
-                print(_formatedDate);
-                month = _formatedDate.split(' ').first.substring(0, 3);
-                day = movie.releaseDate?.split('-')[1] ?? '';
-              } catch (_) {
-                month = '';
-                day = '';
-              }
-              final tv = state.everyoneIsWatchinList[index];
-              return EveryOnesWatchingWidget(
-                  posterPath: '$imageAppendUrl${tv.posterPath}',
-                  movieName: tv.originalname??'No name provided',
-                  description: tv.overview ?? 'No description');
-            },
-            itemCount: state.everyoneIsWatchinList.length,
-          );
-        }
+    return RefreshIndicator(
+      onRefresh: () async {
+        BlocProvider.of<HotAndNewBloc>(context)
+            .add(HotAndNewEvent.loadDataInEveryOnesWatching());
       },
-    );
-  }
-}
+      child: BlocBuilder<HotAndNewBloc, HotAndNewState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state.hasError) {
+            return Text('SOme Error OCcured');
+          } else if (state.everyoneIsWatchinList.isEmpty) {
+            return Text('EveryOnes watching List is Empty');
+          } else {
+            return ListView.builder(
+              padding: EdgeInsets.all(20),
+              itemBuilder: (context, index) {
+                final tv = state.everyoneIsWatchinList[index];
 
-class EveryoneIsWatchinList extends StatelessWidget {
-  EveryoneIsWatchinList({Key? key}) : super(key: key);
+                // String month = '';
+                // String day = '';
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<HotAndNewBloc, HotAndNewState>(
-      builder: (context, state) {
-        if (state.isLoading) {
-          return Center(child: CircularProgressIndicator());
-        } else if (state.hasError) {
-          return Text('SOme Error OCcured');
-        } else if (state.comingSoonList.isEmpty) {
-          return Text('Coming soon List is Empty');
-        } else {
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              final movie = state.comingSoonList[index];
+                // try {
+                //   final _date = DateTime.parse(movie.releaseDate!);
 
-              String month = '';
-              String day = '';
+                //   final _formatedDate = DateFormat.yMMMd('en_US').format(_date);
 
-              try {
-                final _date = DateTime.parse(movie.releaseDate!);
+                //   log(_formatedDate.toString());
+                //   print(_formatedDate);
+                //   month = _formatedDate.split(' ').first.substring(0, 3);
+                //   day = movie.releaseDate?.split('-')[1] ?? '';
+                // } catch (_) {
+                //   month = '';
+                //   day = '';
+                // }
 
-                final _formatedDate = DateFormat.yMMMd('en_US').format(_date);
-
-                log(_formatedDate.toString());
-                print(_formatedDate);
-                month = _formatedDate.split(' ').first.substring(0, 3);
-                day = movie.releaseDate?.split('-')[1] ?? '';
-              } catch (_) {
-                month = '';
-                day = '';
-              }
-
-              return ComingSoonWidget(
-                id: movie.id.toString(),
-                day: day,
-                description: movie.overview ?? 'No Description Available',
-                month: month,
-                movieName: movie.originalTitle ?? 'No Movie Name',
-                posterPath: '$imageAppendUrl${movie.posterPath}' ??
-                    'No Poster Available',
-              );
-            },
-            itemCount: state.comingSoonList.length,
-          );
-        }
-      },
+                return EveryOnesWatchingWidget(
+                    posterPath: '$imageAppendUrl${tv.posterPath}',
+                    movieName: tv.originalname ?? "No Name",
+                    description: tv.overview ?? "no overview");
+              },
+              itemCount: state.everyoneIsWatchinList.length,
+            );
+          }
+        },
+      ),
     );
   }
 }

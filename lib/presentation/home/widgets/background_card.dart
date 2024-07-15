@@ -5,7 +5,8 @@ import 'package:netflixclone/core/constants.dart';
 import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart';
 
 class BackgroundCard extends StatelessWidget {
-  const BackgroundCard({super.key});
+  final String imageUrl;
+  const BackgroundCard({super.key,required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class BackgroundCard extends StatelessWidget {
           height: 600,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(kMainImage), fit: BoxFit.cover),
+                image: NetworkImage(imageUrl), fit: BoxFit.cover),
           ),
         ),
         Positioned(
