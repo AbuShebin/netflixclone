@@ -13,6 +13,7 @@ import 'package:netflixclone/presentation/home/widgets/background_card.dart';
 import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart';
 import 'package:netflixclone/presentation/home/widgets/number_card.dart';
 import 'package:netflixclone/presentation/home/widgets/number_title_card.dart';
+import 'package:netflixclone/presentation/movie_screen/movie_screen.dart';
 import 'package:netflixclone/presentation/widgets/mainCard.dart';
 import 'package:netflixclone/presentation/search/widgets/search_result.dart';
 import 'package:netflixclone/presentation/widgets/main_title.dart';
@@ -115,12 +116,24 @@ class ScreenHome extends StatelessWidget {
 
                         //ListView
                         return ListView(children: [
-                          if(_trending.isNotEmpty)
-                          BackgroundCard(imageUrl: '$imageAppendUrl${state.trendingTvList.first.posterPath}',),
+                          if (_trending.isNotEmpty)
+                            BackgroundCard(
+                              imageUrl:
+                                  '$imageAppendUrl${state.trendingTvList.first.posterPath}',
+                            ),
                           if (_releasedPastYear.length >= 10)
-                            MainTitleCard(
-                              title: 'Released in Past Year',
-                              posterList: _releasedPastYear.sublist(0, 10),
+                            InkWell(
+                              child: MainTitleCard(
+                                title: 'Released in Past Year',
+                                posterList: _releasedPastYear.sublist(0, 10),
+                              ),
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) {
+                                    return MovieScreen();
+                                  },
+                                ));
+                              },
                             ),
                           kheight,
                           if (_trending.length >= 10)
@@ -174,10 +187,15 @@ class ScreenHome extends StatelessWidget {
                                     ),
                                     kWidth,
                                     Container(
-                                      color: Colors.blue,
                                       height: 30,
                                       width: 30,
-                                    )
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/mrbean.png')),
+                                        color: Colors.transparent,
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Row(

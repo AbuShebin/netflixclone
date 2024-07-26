@@ -4,6 +4,10 @@ const kWidth = SizedBox(
   width: 10,
 );
 
+const kWidth20 = SizedBox(
+  width: 20,
+);
+
 const kheight = SizedBox(
   height: 10,
 );

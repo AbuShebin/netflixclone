@@ -15,8 +15,6 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HotAndNewService _homeService;
   HomeBloc(this._homeService) : super(HomeState.initial()) {
-
-
     //on event getHomeScreenData...
     on<GetHomeScreenData>((event, emit) async {
       //send loading to ui
@@ -39,7 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         (MainFailures l) {
           print('HomeBloc movie failure print-->>>');
           return HomeState(
-               stateId: DateTime.now().millisecondsSinceEpoch.toString(),
+              stateId: DateTime.now().millisecondsSinceEpoch.toString(),
               pastYearMovieList: [],
               trendingTvList: [],
               tenseDramasMovieList: [],
@@ -58,8 +56,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           dramas.shuffle();
           southIndian.shuffle();
           return HomeState(
- stateId: DateTime.now().millisecondsSinceEpoch.toString(),
-               pastYearMovieList: pastYear,
+              stateId: DateTime.now().millisecondsSinceEpoch.toString(),
+              pastYearMovieList: pastYear,
               trendingTvList: state.trendingTvList,
               tenseDramasMovieList: dramas,
               southIndianMovieList: southIndian,
@@ -74,7 +72,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         (MainFailures l) {
           print('HomeBloc tv Success print-->>>');
           return HomeState(
-               stateId: DateTime.now().millisecondsSinceEpoch.toString(),
+              stateId: DateTime.now().millisecondsSinceEpoch.toString(),
               pastYearMovieList: [],
               trendingTvList: [],
               tenseDramasMovieList: [],

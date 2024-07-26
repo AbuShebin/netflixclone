@@ -4,6 +4,6 @@ import 'package:netflixclone/domain/hot%20and%20new/hot_and_new_response/models/
 
 abstract class HotAndNewService {
   Future<Either<MainFailures, HotAndNewResponse>> getHotAndNewMovieData();
-  
-  Future<Either<MainFailures, HotAndNewResponse> >getHotAndNEwTvData();
+
+  Future<Either<MainFailures, HotAndNewResponse>> getHotAndNEwTvData();
 }

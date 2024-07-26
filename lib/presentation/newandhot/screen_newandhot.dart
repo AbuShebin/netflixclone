@@ -19,59 +19,56 @@ class ScreenNewandHot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: SafeArea(
-        child: Scaffold(
-          appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(90),
-              child: AppBar(
-                title: const Text(
-                  'New And Hot',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-                ),
-                actions: [
-                  Icon(
-                    Icons.cast,
-                    size: 30,
-                  ),
-                  kWidth,
-                  Container(
-                    color: Colors.blue,
-                    height: 20,
-                    width: 30,
-                  ),
-                  kWidth
-                ],
-                bottom: TabBar(
-                  dividerColor: Colors.transparent,
-                  isScrollable: true,
-                  labelColor: kBlackColor,
-                  unselectedLabelColor: kwhiteColor,
-                  labelStyle:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  indicator: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: kRadius30,
-                  ),
-                  tabs: [
-                    Tab(
-                      text: 'Coming Soon 🍿',
-                    ),
-                    Tab(
-                      text: 'Everyones watching',
-                    )
-                  ],
-                ),
-              )),
-          body: TabBarView(children: [
-            ComingSoomList(
-              key: Key('coming soon'),
-            ),
-            EveryoneIsWatchinList(
-              key: Key('EveryOne_is_watching'),
-            )
-          ]),
+    return SafeArea(
+      child: Scaffold(
+        // appBar: PreferredSize(
+        //     preferredSize: const Size.fromHeight(90),
+        //     child: AppBar(
+        //       title: const Text(
+        //         'New And Hot',
+        //         style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+        //       ),
+        //       actions: [
+        //         Icon(
+        //           Icons.cast,
+        //           size: 30,
+        //         ),
+        //         kWidth,
+        //         Container(
+        //           color: Colors.blue,
+        //           height: 20,
+        //           width: 30,
+        //         ),
+        //         kWidth
+        //       ],
+        //       // bottom: TabBar(
+        //       //   dividerColor: Colors.transparent,
+        //       //   isScrollable: true,
+        //       //   labelColor: kBlackColor,
+        //       //   unselectedLabelColor: kwhiteColor,
+        //       //   labelStyle:
+        //       //       TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        //       //   indicator: BoxDecoration(
+        //       //     color: Colors.white,
+        //       //     borderRadius: kRadius30,
+        //       //   ),
+        //       //   tabs: [
+        //       //     Tab(
+        //       //       text: 'Coming Soon 🍿',
+        //       //     ),
+        //       //     Tab(
+        //       //       text: 'Everyones watching',
+        //       //     )
+        //       //   ],
+        //       // ),
+        //     )),
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50),
+            child: AppBarWidget(
+              title: 'New & Hot',
+            )),
+        body: EveryoneIsWatchinList(
+          key: Key('EveryOne_is_watching'),
         ),
       ),
     );
@@ -103,7 +100,6 @@ class ComingSoomList extends StatelessWidget {
           } else if (state.hasError) {
             return Text('SOme Error OCcured');
           } else if (state.comingSoonList.isEmpty) {
-           
             return Text('Coming soon List is Empty');
           } else {
             return ListView.builder(

@@ -46,7 +46,9 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              videoWidget(imageurl: posterPath,),
+              videoWidget(
+                imageurl: posterPath,
+              ),
               Row(
                 children: [
                   Expanded(

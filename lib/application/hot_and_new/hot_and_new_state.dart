@@ -9,9 +9,10 @@ class HotAndNewState with _$HotAndNewState {
     required bool hasError,
   }) = _Initial;
 
-  factory HotAndNewState.initial() =>const HotAndNewState(
+  factory HotAndNewState.initial() => const HotAndNewState(
       comingSoonList: [],
       everyoneIsWatchinList: [],
       hasError: false,
-      isLoading: false);
+      isLoading: false,
+      );
 }

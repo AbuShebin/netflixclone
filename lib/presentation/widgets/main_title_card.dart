@@ -6,9 +6,7 @@ import 'package:netflixclone/presentation/widgets/main_title.dart';
 class MainTitleCard extends StatelessWidget {
   final String title;
   final List<String> posterList;
-  MainTitleCard({required this.title,required this.posterList});
-
-  
+  MainTitleCard({required this.title, required this.posterList});
 
   @override
   Widget build(BuildContext context) {

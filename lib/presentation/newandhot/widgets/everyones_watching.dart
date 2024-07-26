@@ -5,15 +5,14 @@ import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart
 import 'package:netflixclone/presentation/widgets/video_widget.dart';
 
 class EveryOnesWatchingWidget extends StatelessWidget {
-
   final String posterPath;
-final String movieName;
-final String description;
+  final String movieName;
+  final String description;
 
   const EveryOnesWatchingWidget({
-    required this. posterPath,
-required this.movieName,
-required this. description,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   });
 
   @override
@@ -21,6 +20,10 @@ required this. description,
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // kHeight50,
+        videoWidget(
+          imageurl: posterPath,
+        ),
         kheight,
         Text(
           movieName,
@@ -31,38 +34,39 @@ required this. description,
         ),
         kheight,
         Text(
-         description,
+          description,
           style: TextStyle(color: kGreyColor),
           overflow: TextOverflow.ellipsis,
           maxLines: 4,
         ),
-        kHeight50,
-        videoWidget(imageurl: posterPath,),
         kheight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            CustomButtonWidget(
+              icon: Icons.notifications,
+              title: 'Remind Me',
+              iconSize: 25,
+              textSize: 16,
+            ),
+            kWidth20,
+
             CustomButtonWidget(
               icon: Icons.share,
               title: 'Share',
               iconSize: 25,
               textSize: 16,
             ),
-            kWidth,
-            CustomButtonWidget(
-              icon: Icons.add,
-              title: 'My List',
-              iconSize: 25,
-              textSize: 16,
-            ),
-            kWidth,
-            CustomButtonWidget(
-              icon: Icons.play_arrow,
-              title: 'Play',
-              iconSize: 25,
-              textSize: 16,
-            ),
-            kWidth,
+            // kWidth,
+
+            // kWidth,
+            // CustomButtonWidget(
+            //   icon: Icons.play_arrow,
+            //   title: 'Play',
+            //   iconSize: 25,
+            //   textSize: 16,
+            // ),
+            // kWidth,
           ],
         )
       ],

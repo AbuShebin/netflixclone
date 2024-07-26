@@ -72,6 +72,9 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$InitializeImplCopyWithImpl<$Res>
   __$$InitializeImplCopyWithImpl(
       _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -193,6 +199,8 @@ class __$$SearchMovieImplCopyWithImpl<$Res>
       _$SearchMovieImpl _value, $Res Function(_$SearchMovieImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,7 +240,9 @@ class _$SearchMovieImpl implements SearchMovie {
   @override
   int get hashCode => Object.hash(runtimeType, movieQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchMovieImplCopyWith<_$SearchMovieImpl> get copyWith =>
@@ -306,7 +316,10 @@ abstract class SearchMovie implements SearchEvent {
       _$SearchMovieImpl;
 
   String get movieQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchMovieImplCopyWith<_$SearchMovieImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -318,7 +331,9 @@ mixin _$SearchState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchStateCopyWith<SearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -346,6 +361,8 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -398,6 +415,8 @@ class __$$SearchStateImplCopyWithImpl<$Res>
       _$SearchStateImpl _value, $Res Function(_$SearchStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -486,7 +505,9 @@ class _$SearchStateImpl implements _SearchState {
       isLoading,
       isError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>
@@ -508,8 +529,11 @@ abstract class _SearchState implements SearchState {
   bool get isLoading;
   @override
   bool get isError;
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

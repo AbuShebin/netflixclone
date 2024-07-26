@@ -75,6 +75,9 @@ class _$HotAndNewEventCopyWithImpl<$Res, $Val extends HotAndNewEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of HotAndNewEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,9 @@ class __$$LoadDataInComingSoonImplCopyWithImpl<$Res>
   __$$LoadDataInComingSoonImplCopyWithImpl(_$LoadDataInComingSoonImpl _value,
       $Res Function(_$LoadDataInComingSoonImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HotAndNewEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -200,6 +206,9 @@ class __$$LoadDataInEveryOnesWatchingImplCopyWithImpl<$Res>
       _$LoadDataInEveryOnesWatchingImpl _value,
       $Res Function(_$LoadDataInEveryOnesWatchingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HotAndNewEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -301,7 +310,9 @@ mixin _$HotAndNewState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HotAndNewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HotAndNewStateCopyWith<HotAndNewState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -329,6 +340,8 @@ class _$HotAndNewStateCopyWithImpl<$Res, $Val extends HotAndNewState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HotAndNewState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -381,6 +394,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HotAndNewState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -471,7 +486,9 @@ class _$InitialImpl implements _Initial {
       isLoading,
       hasError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HotAndNewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -493,8 +510,11 @@ abstract class _Initial implements HotAndNewState {
   bool get isLoading;
   @override
   bool get hasError;
+
+  /// Create a copy of HotAndNewState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

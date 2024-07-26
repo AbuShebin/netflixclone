@@ -75,54 +75,50 @@ class Section2 extends StatelessWidget {
             // print(state.downloads);
             // print('------state.downloads----------');
             return SizedBox(
-              height: size.height,
               width: size.width,
-              child: SizedBox(
-                width: size.width,
-                height: size.width,
-                child: state.isLoading == true
-                    ? const Center(child: CircularProgressIndicator())
-                    : Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: size.width * 0.35,
-                            backgroundColor: Colors.grey.withOpacity(0.5),
-                          ),
-                          DownloadsImageWidget(
-                              image: state.downloads.isNotEmpty
-                                  ? '$imageAppendUrl${state.downloads[0].posterPath.toString()}'
-                                  : '',
-                              // image: '',
-                              margin: EdgeInsets.only(
-                                left: 130,
-                              ),
-                              angle: 25,
-                              // radius: 10,
-                              size: Size(size.width * 0.35, size.width * 0.55)),
-                          DownloadsImageWidget(
-                              image: state.downloads.isNotEmpty
-                                  ? '$imageAppendUrl${state.downloads[1].posterPath.toString()}'
-                                  : '',
+              height: size.width,
+              child: state.isLoading == true
+                  ? const Center(child: CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: size.width * 0.35,
+                          backgroundColor: Colors.grey.withOpacity(0.5),
+                        ),
+                        DownloadsImageWidget(
+                            image: state.downloads.isNotEmpty
+                                ? '$imageAppendUrl${state.downloads[0].posterPath.toString()}'
+                                : '',
+                            // image: '',
+                            margin: EdgeInsets.only(
+                              left: 130,
+                            ),
+                            angle: 25,
+                            // radius: 10,
+                            size: Size(size.width * 0.35, size.width * 0.55)),
+                        DownloadsImageWidget(
+                            image: state.downloads.isNotEmpty
+                                ? '$imageAppendUrl${state.downloads[1].posterPath.toString()}'
+                                : '',
 
-                              // image: '',
-                              margin: EdgeInsets.only(
-                                right: 130,
-                              ),
-                              angle: -20,
-                              size: Size(size.width * 0.35, size.width * 0.55)),
-                          DownloadsImageWidget(
-                              // image: '',
-                              image: state.downloads.isNotEmpty
-                                  ? '$imageAppendUrl${state.downloads[2].posterPath.toString()}'
-                                  : '',
-                              radius: 5,
-                              margin:
-                                  EdgeInsets.only(left: 0, top: 0, bottom: 10),
-                              size: Size(size.width * 0.4, size.width * 0.6)),
-                        ],
-                      ),
-              ),
+                            // image: '',
+                            margin: EdgeInsets.only(
+                              right: 130,
+                            ),
+                            angle: -20,
+                            size: Size(size.width * 0.35, size.width * 0.55)),
+                        DownloadsImageWidget(
+                            // image: '',
+                            image: state.downloads.isNotEmpty
+                                ? '$imageAppendUrl${state.downloads[2].posterPath.toString()}'
+                                : '',
+                            radius: 5,
+                            margin:
+                                EdgeInsets.only(left: 0, top: 0, bottom: 10),
+                            size: Size(size.width * 0.4, size.width * 0.6)),
+                      ],
+                    ),
             );
           },
         ),

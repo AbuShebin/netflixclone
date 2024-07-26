@@ -25,7 +25,10 @@ class videoWidget extends StatelessWidget {
               if (progress == null) {
                 return child;
               } else {
-                return Center(child: CircularProgressIndicator(strokeWidth: 2,));
+                return Center(
+                    child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                ));
               }
             },
             errorBuilder: (BuildContext _, Object a, StackTrace? trace) {

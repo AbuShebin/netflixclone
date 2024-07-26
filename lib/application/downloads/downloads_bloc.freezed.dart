@@ -66,6 +66,9 @@ class _$DownloadsEventCopyWithImpl<$Res, $Val extends DownloadsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DownloadsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -82,6 +85,9 @@ class __$$GetDownloadsImageImplCopyWithImpl<$Res>
   __$$GetDownloadsImageImplCopyWithImpl(_$GetDownloadsImageImpl _value,
       $Res Function(_$GetDownloadsImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DownloadsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -171,7 +177,9 @@ mixin _$DownloadsState {
   Option<Either<MainFailures, List<Downloads>>>
       get downloadsFailureOrSuccessOption => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DownloadsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DownloadsStateCopyWith<DownloadsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -199,6 +207,8 @@ class _$DownloadsStateCopyWithImpl<$Res, $Val extends DownloadsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DownloadsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -246,6 +256,8 @@ class __$$DownloadsStateImplCopyWithImpl<$Res>
       _$DownloadsStateImpl _value, $Res Function(_$DownloadsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DownloadsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -320,7 +332,9 @@ class _$DownloadsStateImpl implements _DownloadsState {
       const DeepCollectionEquality().hash(_downloads),
       downloadsFailureOrSuccessOption);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DownloadsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DownloadsStateImplCopyWith<_$DownloadsStateImpl> get copyWith =>
@@ -342,8 +356,11 @@ abstract class _DownloadsState implements DownloadsState {
   @override
   Option<Either<MainFailures, List<Downloads>>>
       get downloadsFailureOrSuccessOption;
+
+  /// Create a copy of DownloadsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DownloadsStateImplCopyWith<_$DownloadsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

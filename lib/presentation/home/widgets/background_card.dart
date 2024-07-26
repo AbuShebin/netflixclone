@@ -6,7 +6,7 @@ import 'package:netflixclone/presentation/home/widgets/custom_button_widget.dart
 
 class BackgroundCard extends StatelessWidget {
   final String imageUrl;
-  const BackgroundCard({super.key,required this.imageUrl});
+  const BackgroundCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {

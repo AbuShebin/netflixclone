@@ -5,12 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:netflixclone/core/colors.dart';
 
 class NumberCard extends StatelessWidget {
- final String imageUrl ;
-
-
+  final String imageUrl;
 
   final int index;
-  NumberCard({required this.index,required this.imageUrl});
+  NumberCard({required this.index, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +38,7 @@ class NumberCard extends StatelessWidget {
               strokeWidth: 10.0,
               child: Text(
                 "${index + 1}",
-                style:const TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: kBlackColor,
                   fontSize: 150,

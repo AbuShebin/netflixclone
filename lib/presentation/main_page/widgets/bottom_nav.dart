@@ -30,24 +30,30 @@ class BottomNavigationWidget extends StatelessWidget {
                   label: 'Home'),
               BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.collections,
-                  ),
-                  label: 'New & Hot'),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.emoji_emotions,
-                  ),
-                  label: 'Fast Laughs'),
-              BottomNavigationBarItem(
-                  icon: Icon(
                     Icons.search,
                   ),
                   label: 'Search'),
               BottomNavigationBarItem(
                   icon: Icon(
+                    Icons.collections,
+                  ),
+                  label: 'New & Hot'),
+              // BottomNavigationBarItem(
+              //     icon: Icon(
+              //       Icons.emoji_emotions,
+              //     ),
+              //     label: 'Fast Laughs'),
+
+              BottomNavigationBarItem(
+                  icon: Icon(
                     Icons.download,
                   ),
                   label: 'Downloads'),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.menu,
+                  ),
+                  label: 'More'),
             ]);
       },
     );

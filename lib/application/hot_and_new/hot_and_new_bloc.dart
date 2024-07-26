@@ -63,7 +63,7 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
 
       // Data to state
       final newState = _result.fold(
-        (MainFailures l) =>const HotAndNewState(
+        (MainFailures l) => const HotAndNewState(
           comingSoonList: [],
           everyoneIsWatchinList: [],
           isLoading: false,

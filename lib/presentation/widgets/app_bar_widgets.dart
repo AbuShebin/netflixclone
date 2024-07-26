@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflixclone/core/constants.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({super.key, required this.title});
@@ -23,11 +24,16 @@ class AppBarWidget extends StatelessWidget {
             Icons.cast,
             size: 30,
           ),
+          kWidth,
           Container(
-            color: Colors.blue,
             height: 30,
             width: 30,
-          )
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('assets/mrbean.png')),
+              color: Colors.transparent,
+            ),
+          ),
+          kWidth
         ],
       ),
     );

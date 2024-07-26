@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<SearchBloc>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getIt<HotAndNewBloc>(),
         ),
         BlocProvider(
@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.dark(),
           textTheme: TextTheme(displayMedium: TextStyle(color: Colors.white)),
           scaffoldBackgroundColor: backgroundColor,
+          useMaterial3: false,
         ),
         home: ScreenMainPage(),
       ),

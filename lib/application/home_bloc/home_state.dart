@@ -13,7 +13,7 @@ class HomeState with _$HomeState {
   }) = _Initial;
 
   factory HomeState.initial() => HomeState(
-    stateId: '0',
+      stateId: '0',
       pastYearMovieList: [],
       trendingTvList: [],
       tenseDramasMovieList: [],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/colors.dart';
-import 'package:netflixclone/presentation/downloads/widgets/screen_downloads.dart';
-import 'package:netflixclone/presentation/fastLagh/screen_fastLaugh.dart';
+import 'package:netflixclone/presentation/More/morePage.dart';
+import 'package:netflixclone/presentation/downloads/screen_downloads.dart';
 import 'package:netflixclone/presentation/home/screen_home.dart';
 import 'package:netflixclone/presentation/main_page/widgets/bottom_nav.dart';
 import 'package:netflixclone/presentation/newandhot/screen_newandhot.dart';
@@ -12,10 +12,10 @@ class ScreenMainPage extends StatelessWidget {
 
   final _pages = [
     ScreenHome(),
-    ScreenNewandHot(),
-    ScreenFastLaugh(),
     ScreenSearch(),
-    ScreenDownloads()
+    ScreenNewandHot(),
+    ScreenDownloads(),
+    Morepage(),
   ];
 
   @override
